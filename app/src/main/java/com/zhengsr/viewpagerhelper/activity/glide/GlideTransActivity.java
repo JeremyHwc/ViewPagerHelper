@@ -55,7 +55,7 @@ public class GlideTransActivity extends AppCompatActivity {
         viewPager.setPageListener(bean, R.layout.image_layout, new PageHelperListener() {
             @Override
             public void getItemView(View view, Object data) {
-                ImageView imageView = view.findViewById(R.id.icon);
+                ImageView imageView = (ImageView) view.findViewById(R.id.icon);
                 imageView.setImageResource((Integer) data);
             }
         });

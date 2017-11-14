@@ -22,8 +22,7 @@
         app:tab_text_type="normaltext"
         app:tab_textsize="16sp"
         app:visiabel_size="3"
-        app:tap_type="rect"
-        >
+        app:tap_type="rect">
 
     </com.zhengsr.viewpagerlib.indicator.TabIndicator>
 

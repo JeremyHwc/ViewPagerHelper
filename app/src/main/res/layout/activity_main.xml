@@ -42,8 +42,8 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
-        app:arc_height="15dp"
-       />
+        app:arc_height="15dp"/>
+
     <com.zhengsr.viewpagerlib.view.ColorTextView
         android:id="@+id/colortext"
         android:layout_marginTop="20dp"

@@ -18,9 +18,11 @@ import com.zhengsr.viewpagerlib.indicator.ZoomIndicator;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/11/9.
+ * @author JeremyHwc;
+ * @date 2017/11/14/014 11:09;
+ * @email jeremy_hwc@163.com ;
+ * @desc
  */
-
 public class GlideViewPager extends ViewPager {
     private LayoutInflater mInflater;
     public GlideViewPager(Context context) {
@@ -31,9 +33,11 @@ public class GlideViewPager extends ViewPager {
         super(context, attrs);
         mInflater = LayoutInflater.from(context);
     }
+
     public void setPageListener(PageBean bean, int layoutid, PageHelperListener listener){
         CusViewPagerAdapter adapter = new CusViewPagerAdapter<>(bean.datas,layoutid,listener);
         setAdapter(adapter);
+
         setOffscreenPageLimit(3);
         setCurrentItem(bean.datas.size());
         setCurrentItem(0);
@@ -51,17 +55,19 @@ public class GlideViewPager extends ViewPager {
             if (bean.bottomLayout instanceof TextIndicator){
                 ((TextIndicator) bean.bottomLayout).addPagerData(bean,this);
             }
-
-
         }
     }
 
+    /**
+     * ViewpagerAdapter
+     * @param <T>
+     */
     class CusViewPagerAdapter<T> extends PagerAdapter{
-        PageHelperListener listener;
         List<T> list;
         int layoutid;
-        public CusViewPagerAdapter(List<T> list,
-                                   int layoutid,PageHelperListener listener) {
+        PageHelperListener listener;
+
+        public CusViewPagerAdapter(List<T> list,int layoutid,PageHelperListener listener) {
             this.listener = listener;
             this.list = list;
             this.layoutid = layoutid;
@@ -77,6 +83,13 @@ public class GlideViewPager extends ViewPager {
             return view == object;
         }
 
+        /**
+         * Create the page for the given position
+         * @param container The containing View in which the page will be shown.
+         * @param position The page position to be instantiated.
+         * @return Returns an Object representing the new page.  This does not
+         * need to be a View, but can be some other container of the page.
+         */
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             View view = mInflater.inflate(layoutid,null);
@@ -85,6 +98,13 @@ public class GlideViewPager extends ViewPager {
             return view;
         }
 
+        /**
+         * Remove a page for the given position.
+         * @param container The containing View from which the page will be removed.
+         * @param position The page position to be removed.
+         * @param object The same object that was returned by
+         * {@link #instantiateItem(View, int)}.
+         */
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((View) object);

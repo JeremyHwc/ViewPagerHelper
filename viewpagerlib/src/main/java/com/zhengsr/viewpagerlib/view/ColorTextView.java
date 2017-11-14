@@ -29,24 +29,31 @@ public class ColorTextView extends TextView {
     private int mDefaultColor = 0xff000000;
     private int mChangeColor = 0xffff0000;
     private int mDecection = DEC_LEFT;
+
     public ColorTextView(Context context) {
         this(context,null);
     }
 
     public ColorTextView(Context context, AttributeSet attrs) {
         this(context, attrs,0);
-
-
-
     }
 
     public ColorTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ColorTextView);
-        mDefaultColor = ta.getColor(R.styleable.ColorTextView_colortext_default_color,mDefaultColor);
-        mChangeColor = ta.getColor(R.styleable.ColorTextView_colortext_change_color,mChangeColor);
-        int textsize = ta.getDimensionPixelSize(R.styleable.ColorTextView_colortext_size,20);
+        mDefaultColor = ta.getColor(R.styleable.ColorTextView_colortext_default_color,mDefaultColor);//默认颜色
+        mChangeColor = ta.getColor(R.styleable.ColorTextView_colortext_change_color,mChangeColor);//改变颜色
+        int textsize = ta.getDimensionPixelSize(R.styleable.ColorTextView_colortext_size,20);//文字大小
         ta.recycle();
+        initPaint(textsize);
+    }
+
+    /**
+     * 初始化Paint对象
+     * @param textsize
+     */
+    private void initPaint(int textsize) {
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setDither(true);
@@ -60,13 +67,15 @@ public class ColorTextView extends TextView {
      * @param changeColor
      * @param textsize
      */
-    public void setTextColor(int defaultColor,int changeColor,int textsize){
+    public void setTextColorAndSize(int defaultColor,int changeColor,int textsize){
         mDefaultColor = defaultColor;
         mChangeColor = changeColor;
         mPaint.setTextSize(textsize);
         invalidate();
     }
+
     private float mProgress = 0;
+
     public void setprogress(float progress,int decection) {
         mDecection = decection;
         mProgress = progress;
@@ -87,6 +96,7 @@ public class ColorTextView extends TextView {
             drawText(canvas, 0,(int) ( mProgress * mWidth), mChangeColor);
         }
     }
+
     private void drawText(Canvas canvas,int start,int end,int color){
         mPaint.setColor(color);
         canvas.save();
@@ -115,7 +125,6 @@ public class ColorTextView extends TextView {
 
     //设置高的大小
     private int measureHeight(int heightMeasureSpec) {
-        // TODO Auto-generated method stub
         int result = 0;
         //获取模式和大小
         int specMode = MeasureSpec.getMode(heightMeasureSpec);
@@ -131,10 +140,10 @@ public class ColorTextView extends TextView {
         }
         return result;
     }
+
     //设置宽的大小
     private int measureWidth(int widthMeasureSpec) {
-        // TODO Auto-generated method stub
-        int result = 0;
+        int result;
         //获取模式和大小
         int specMode = MeasureSpec.getMode(widthMeasureSpec);
         int specSize = MeasureSpec.getSize(widthMeasureSpec);
@@ -149,6 +158,4 @@ public class ColorTextView extends TextView {
         }
         return result;
     }
-
-
 }

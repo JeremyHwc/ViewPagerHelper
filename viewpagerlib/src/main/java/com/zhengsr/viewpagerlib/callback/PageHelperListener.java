@@ -3,7 +3,10 @@ package com.zhengsr.viewpagerlib.callback;
 import android.view.View;
 
 /**
- * Created by Administrator on 2017/11/9.
+ * @author JeremyHwc;
+ * @date 2017/11/14/014 11:26;
+ * @email jeremy_hwc@163.com ;
+ * @desc
  */
 
 public interface PageHelperListener<T> {

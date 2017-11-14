@@ -62,12 +62,11 @@
         <attr name="tab_text_default_color" format="color|reference"/> <!--顶部文字默认的颜色-->
         <attr name="tab_text_change_color" format="color|reference"/> <!--移动时，顶部文字的颜色-->
         <attr name="tab_show" format="boolean"/>  <!--是否显示指示器-->
-        <attr name="tab_text_type">               <!--顶部文字的类型，nromaltext为普通的textview，
-                                                       corlortext为文件渐变-->
+        <attr name="tab_text_type">               <!--顶部文字的类型，nromaltext为普通的textview， corlortext为文件渐变-->
             <enum name="normaltext" value="0"/>
             <enum name="colortext" value="1"/>
         </attr>
-        <attr name="tap_type" >           <!--指示器类型，有三角形或者圆条-->
+        <attr name="tap_type">           <!--指示器类型，有三角形或者圆条-->
             <enum name="tri" value="0"/>
             <enum name="rect" value="1"/>
         </attr>

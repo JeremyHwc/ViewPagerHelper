@@ -23,8 +23,7 @@ import java.util.List;
 public class LoopActivity extends AppCompatActivity {
 
 
-    private static final Integer[] RES = {R.mipmap.guide1,R.mipmap.guide2,R.mipmap.guide3,
-            R.mipmap.guide4 };
+    private static final Integer[] RES = {R.mipmap.guide1,R.mipmap.guide2,R.mipmap.guide3,  R.mipmap.guide4 };
 
     private static final String[] RESURL = {
             "http://img.mukewang.com/54bf7e1f000109c506000338-590-330.jpg",
@@ -42,9 +41,6 @@ public class LoopActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loop);
-
-
-
 
         // 第一个viewpager
         mBannerCountViewPager = (BannerViewPager) findViewById(R.id.loop_viewpager);
@@ -72,7 +68,7 @@ public class LoopActivity extends AppCompatActivity {
         mBannerCountViewPager.setPageListener(bean, R.layout.loop_layout, new PageHelperListener() {
             @Override
             public void getItemView(View view, Object data) {
-                ImageView imageView = view.findViewById(R.id.loop_icon);
+                ImageView imageView = (ImageView) view.findViewById(R.id.loop_icon);
                 LoopBean bean = (LoopBean) data;
                 new GlideManager.Builder()
                         .setContext(LoopActivity.this)
@@ -80,7 +76,7 @@ public class LoopActivity extends AppCompatActivity {
                         .setLoadingBitmap(R.mipmap.ic_launcher)
                         .setImageView(imageView)
                         .builder();
-                TextView textView = view.findViewById(R.id.loop_text);
+                TextView textView = (TextView) view.findViewById(R.id.loop_text);
                 textView.setText(bean.text);
 
                 //如若你要设置点击事件，也可以直接通过这个view 来设置，或者图片的更新等等
@@ -100,7 +96,7 @@ public class LoopActivity extends AppCompatActivity {
         arcBannerViewPager.setPageListener(arcbean, R.layout.arc_loop_layout, new PageHelperListener() {
             @Override
             public void getItemView(View view, Object data) {
-                ArcImageView imageView = view.findViewById(R.id.arc_icon);
+                ArcImageView imageView = (ArcImageView) view.findViewById(R.id.arc_icon);
                 LoopBean bean = (LoopBean) data;
                 new GlideManager.Builder()
                         .setContext(LoopActivity.this)
@@ -134,7 +130,7 @@ public class LoopActivity extends AppCompatActivity {
         transBannerViewPager.setPageListener(bean, R.layout.loop_layout, new PageHelperListener() {
             @Override
             public void getItemView(View view, Object data) {
-                ImageView imageView = view.findViewById(R.id.loop_icon);
+                ImageView imageView = (ImageView) view.findViewById(R.id.loop_icon);
                 final LoopBean bean = (LoopBean) data;
                 new GlideManager.Builder()
                         .setContext(LoopActivity.this)
@@ -142,7 +138,7 @@ public class LoopActivity extends AppCompatActivity {
                         .setLoadingBitmap(R.mipmap.ic_launcher)
                         .setImageView(imageView)
                         .builder();
-                TextView textView = view.findViewById(R.id.loop_text);
+                TextView textView = (TextView) view.findViewById(R.id.loop_text);
                 textView.setText(bean.text);
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -169,7 +165,7 @@ public class LoopActivity extends AppCompatActivity {
         textBannerViewPager.setPageListener(bean, R.layout.image_layout, new PageHelperListener() {
             @Override
             public void getItemView(View view, Object data) {
-                ImageView imageView = view.findViewById(R.id.icon);
+                ImageView imageView = (ImageView) view.findViewById(R.id.icon);
                 LoopBean bean = (LoopBean) data;
                 new GlideManager.Builder()
                         .setContext(LoopActivity.this)
@@ -192,8 +188,6 @@ public class LoopActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         mBannerCountViewPager.onPause();
-
-
     }
 
     @Override

@@ -17,8 +17,7 @@ import com.zhengsr.viewpagerlib.view.ColorTextView;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "zsr";
-    private static final int[] RES = {R.mipmap.guide1,R.mipmap.guide2,R.mipmap.guide3,
-            R.mipmap.guide4 };
+    private static final int[] RES = {R.mipmap.guide1, R.mipmap.guide2, R.mipmap.guide3, R.mipmap.guide4};
     private ColorTextView mColorTextView;
 
     @Override
@@ -37,51 +36,79 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * app首次启动引导图 正常版
+     * @param view
+     */
     public void glide(View view) {
         startActivity(new Intent(this, GlidenormalActivity.class));
     }
 
+
+    /**
+     * app首次启动引导图 移动版
+     * @param view
+     */
     public void glide_tran(View view) {
         startActivity(new Intent(this, GlideTransActivity.class));
     }
 
+    /**
+     * app首次启动引导图 放大版
+     * @param view
+     */
     public void glide_scale(View view) {
         startActivity(new Intent(this, GlideZoomActivity.class));
     }
 
 
+    /**
+     * 轮播图
+     * @param view
+     */
     public void loop_max(View view) {
         startActivity(new Intent(this, LoopActivity.class));
     }
 
+    /**
+     * 三种样式的指示器
+     * @param view
+     */
     public void fragment(View view) {
-        startActivity(new Intent(this,TabActivity.class));
+        startActivity(new Intent(this, TabActivity.class));
     }
 
+    /**
+     * ColorTextView
+     * @param view
+     */
     public void leftchange(View view) {
-        ObjectAnimator animator = ObjectAnimator.ofFloat(mColorTextView,"progress",0,1);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(mColorTextView, "progress", 0, 1);
         animator.setDuration(2000).start();
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 float value = (float) animation.getAnimatedValue();
-                mColorTextView.setprogress(value,ColorTextView.DEC_LEFT);
+                mColorTextView.setprogress(value, ColorTextView.DEC_LEFT);
             }
         });
 
 
     }
 
+    /**
+     * ColorTextView
+     * @param view
+     */
     public void rightchange(View view) {
 
-        ObjectAnimator animator = ObjectAnimator.ofFloat(mColorTextView,"progress",0,1);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(mColorTextView, "progress", 0, 1);
         animator.setDuration(2000).start();
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 float value = (float) animation.getAnimatedValue();
-                mColorTextView.setprogress(value,ColorTextView.DEC_RIGHT);
+                mColorTextView.setprogress(value, ColorTextView.DEC_RIGHT);
             }
         });
     }

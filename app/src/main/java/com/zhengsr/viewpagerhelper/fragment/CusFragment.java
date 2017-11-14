@@ -18,8 +18,6 @@ public class CusFragment extends Fragment {
     public static final String ARGUMENT = "argument";
     private String mTitle;
 
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

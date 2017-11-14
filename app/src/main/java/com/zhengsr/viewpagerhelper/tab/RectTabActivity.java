@@ -30,6 +30,7 @@ public class RectTabActivity extends AppCompatActivity {
             CusFragment fragment = CusFragment.newInStance(string);
             mFragments.add(fragment);
         }
+
         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         TabIndicator tritabIndecator = (TabIndicator) findViewById(R.id.line_indicator);
         viewPager.setAdapter(new CusAdapter(getSupportFragmentManager()));
@@ -41,8 +42,6 @@ public class RectTabActivity extends AppCompatActivity {
                 viewPager.setCurrentItem(position);
             }
         });
-
-
     }
 
 

@@ -23,7 +23,7 @@ import com.zhengsr.viewpagerlib.R;
  */
 
 public class ArcImageView extends ImageView {
-    private static final String TAG = "zsr";
+    private static final String TAG = "ArcImageView";
     private Paint mPaint;
     private Path mPath;
     private Bitmap mBitmap;
@@ -44,40 +44,35 @@ public class ArcImageView extends ImageView {
         
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ArcImageView);
         mArcHeight = ta.getDimensionPixelSize(R.styleable.ArcImageView_arc_height,30);
-
         ta.recycle();
+
+        initPaint();
+    }
+
+    private void initPaint() {
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPath = new Path();
-
-
-
-
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-
         if (mBitmap != null){
-            Shader shader = new BitmapShader(mBitmap, Shader.TileMode.CLAMP,
-                    Shader.TileMode.CLAMP);
+            Shader shader = new BitmapShader(mBitmap, Shader.TileMode.CLAMP,Shader.TileMode.CLAMP);
             mPaint.setShader(shader);
             canvas.drawPath(mPath,mPaint);
         }
-
     }
 
     @Override
     public void setImageResource(int resId) {
         mBitmap = BitmapFactory.decodeResource(getResources(),resId);
-        Log.d(TAG, "zsr --> setImageResource: ");
         invalidate();
     }
 
     @Override
     public void setImageDrawable(Drawable drawable) {
         BitmapDrawable bd = (BitmapDrawable) drawable;
-        Log.d(TAG, "zsr --> setImageDrawable: "+drawable);
         if (bd != null){
             mBitmap = bd.getBitmap();
             invalidate();
@@ -94,7 +89,6 @@ public class ArcImageView extends ImageView {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-
     }
 
     @Override
@@ -105,8 +99,6 @@ public class ArcImageView extends ImageView {
         mPath.moveTo(0,0);
         mPath.addRect(0,0,width,height -mArcHeight, Path.Direction.CW);
 
-
-
         mPath.moveTo(0, height - mArcHeight);
         mPath.quadTo(width / 2, height + mArcHeight, width, height - mArcHeight);
         setMeasuredDimension(width, height);
@@ -115,7 +107,6 @@ public class ArcImageView extends ImageView {
 
     //设置高的大小
     private int measureHeight(int heightMeasureSpec) {
-        // TODO Auto-generated method stub
         int result = 0;
         //获取模式和大小
         int specMode = MeasureSpec.getMode(heightMeasureSpec);
@@ -133,7 +124,6 @@ public class ArcImageView extends ImageView {
     }
     //设置宽的大小
     private int measureWidth(int widthMeasureSpec) {
-        // TODO Auto-generated method stub
         int result = 0;
         //获取模式和大小
         int specMode = MeasureSpec.getMode(widthMeasureSpec);

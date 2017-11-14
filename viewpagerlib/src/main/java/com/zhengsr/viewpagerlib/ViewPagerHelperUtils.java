@@ -7,8 +7,10 @@ import android.widget.Scroller;
 import java.lang.reflect.Field;
 
 /**
- * Created by zhengshaorui on 2017/11/5.
- * csdn: http://blog.csdn.net/u011418943
+ * @author JeremyHwc;
+ * @date 2017/11/14/014 10:22;
+ * @email jeremy_hwc@163.com ;
+ * @desc 设置ViewPager的滑动时间
  */
 
 public class ViewPagerHelperUtils {
@@ -21,8 +23,6 @@ public class ViewPagerHelperUtils {
     public static final int VIEWPAGER_DATA_URL = 0x2002;
     public static final int VIEWPAGER_DATA_RES = 0x2003;
     public static final int VIEWPAGER_DATA_VIEW = 0x2004;
-
-
 
     /**
      * 设置viewpager 之间的切换速度
@@ -44,15 +44,14 @@ public class ViewPagerHelperUtils {
             this.time = time;
         }
 
-        @Override
+        /*@Override
         public void startScroll(int startX, int startY, int dx, int dy) {
             super.startScroll(startX, startY, dx, time);
-        }
+        }*/
 
         @Override
         public void startScroll(int startX, int startY, int dx, int dy, int duration) {
             super.startScroll(startX, startY, dx, dy, time);
         }
     }
-
 }

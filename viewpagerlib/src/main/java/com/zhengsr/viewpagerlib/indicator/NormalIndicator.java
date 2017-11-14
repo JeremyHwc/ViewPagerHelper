@@ -24,14 +24,13 @@ import com.zhengsr.viewpagerlib.bean.PageBean;
  * csdn: http://blog.csdn.net/u011418943
  */
 public class NormalIndicator extends LinearLayout implements ViewPager.OnPageChangeListener {
-    private static final String TAG = "zsr";
-
+    private static final String TAG = "NormalIndicator";
 
     /**
      * normal and logic
      */
     private Context mContext;
-    private int mLastPosition ;
+    private int mLastPosition;
     private int mCount = 0;
     /**
      * attrs
@@ -44,41 +43,37 @@ public class NormalIndicator extends LinearLayout implements ViewPager.OnPageCha
      */
     private View mOpenView;
 
-
     public NormalIndicator(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public NormalIndicator(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public NormalIndicator(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.NormalIndicator);
-        mSelector = ta.getResourceId(R.styleable.NormalIndicator_normal_selector,
-                R.drawable.page_bottom_circle);
-        mLeftMargin = (int) ta.getDimension(R.styleable.NormalIndicator_normal_leftmargin,15);
-        mDismissOpen =  ta.getBoolean(R.styleable.NormalIndicator_normal_dismiss_open,false);
+        mSelector = ta.getResourceId(R.styleable.NormalIndicator_normal_selector, R.drawable.page_bottom_circle);
+        mLeftMargin = (int) ta.getDimension(R.styleable.NormalIndicator_normal_leftmargin, 15);
+        mDismissOpen = ta.getBoolean(R.styleable.NormalIndicator_normal_dismiss_open, false);
         setGravity(Gravity.CENTER);
         ta.recycle();
     }
 
 
-    public void addPagerData(PageBean bean, ViewPager viewPager){
+    public void addPagerData(PageBean bean, ViewPager viewPager) {
         if (bean != null) {
             mCount = bean.datas.size();
             //这里加小圆点
-            LayoutParams params = new
-                    LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.setMargins(mLeftMargin,0,0,0);
+            LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.setMargins(mLeftMargin, 0, 0, 0);
             for (int i = 0; i < mCount; i++) {
                 ImageView imageView = new ImageView(mContext);
-                if (i == 0){
+                if (i == 0) {
                     imageView.setSelected(true);
-                }else{
+                } else {
                     imageView.setSelected(false);
                 }
                 imageView.setLayoutParams(params);
@@ -91,7 +86,7 @@ public class NormalIndicator extends LinearLayout implements ViewPager.OnPageCha
                 viewPager.addOnPageChangeListener(this);
             }
         }
-        if (bean.openview != null){
+        if (bean.openview != null) {
             mOpenView = bean.openview;
         }
     }
@@ -104,8 +99,8 @@ public class NormalIndicator extends LinearLayout implements ViewPager.OnPageCha
 
     @Override
     public void onPageSelected(int position) {
-        viewPagerSeleted(position%mCount);
-        showStartView(position%mCount);
+        viewPagerSeleted(position % mCount);
+        showStartView(position % mCount);
     }
 
 
@@ -115,12 +110,13 @@ public class NormalIndicator extends LinearLayout implements ViewPager.OnPageCha
     }
 
     /**
-     *  用于viewpager 滑动时，底部圆点的状态显示
+     * 用于viewpager 滑动时，底部圆点的状态显示
+     *
      * @param position
      */
     private void viewPagerSeleted(int position) {
-        View lastView ;
-        if (mLastPosition >= 0){
+        View lastView;
+        if (mLastPosition >= 0) {
             lastView = getChildAt(mLastPosition);
             if (lastView != null) {
                 lastView.setSelected(false);
@@ -129,7 +125,7 @@ public class NormalIndicator extends LinearLayout implements ViewPager.OnPageCha
         }
 
         View currentView = getChildAt(position);
-        if (currentView != null){
+        if (currentView != null) {
             currentView.setSelected(true);
         }
         mLastPosition = position;
@@ -138,6 +134,7 @@ public class NormalIndicator extends LinearLayout implements ViewPager.OnPageCha
 
     /**
      * 显示最后一页的状态
+     *
      * @param position
      */
     private void showStartView(int position) {
@@ -150,8 +147,8 @@ public class NormalIndicator extends LinearLayout implements ViewPager.OnPageCha
                 animator.setDuration(500);
                 animator.setInterpolator(new LinearInterpolator());
                 animator.start();
-                Log.d(TAG, "zsr --> showStartView: "+mDismissOpen);
-                if (mDismissOpen){
+                Log.d(TAG, "zsr --> showStartView: " + mDismissOpen);
+                if (mDismissOpen) {
                     setVisibility(View.GONE);
                 }
             }
@@ -169,7 +166,7 @@ public class NormalIndicator extends LinearLayout implements ViewPager.OnPageCha
                         mOpenView.setVisibility(GONE);
                     }
                 });
-                if (mDismissOpen){
+                if (mDismissOpen) {
                     setVisibility(VISIBLE);
                 }
             }

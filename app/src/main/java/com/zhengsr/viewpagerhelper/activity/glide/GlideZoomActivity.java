@@ -55,7 +55,7 @@ public class GlideZoomActivity extends AppCompatActivity {
             @Override
             public void getItemView(View view, Object data) {
                 //通过获取到这个view，你可以随意定制你的内容
-                ImageView imageView = view.findViewById(R.id.icon);
+                ImageView imageView = (ImageView) view.findViewById(R.id.icon);
                 imageView.setImageResource((Integer) data);
             }
         });
