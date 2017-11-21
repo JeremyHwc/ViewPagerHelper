@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="true"
@@ -12,19 +12,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"/>
+
     <FrameLayout
-        android:background="@color/black_ff"
         android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:layout_gravity="bottom"
-        android:layout_height="30dp">
+        android:background="@color/black_ff">
+
         <TextView
             android:id="@+id/loop_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="8dp"
-            android:textSize="16sp"
             android:gravity="center_vertical"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textSize="16sp"/>
     </FrameLayout>
 
 

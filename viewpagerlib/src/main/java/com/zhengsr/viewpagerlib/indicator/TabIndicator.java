@@ -151,8 +151,7 @@ public class TabIndicator extends LinearLayout {
      * @param viewPager
      * @param titles    textview 的内容
      */
-    public void setTabData(final ViewPager viewPager, final List<String> titles,
-                           final TabClickListener listener) {
+    public void setTabData(final ViewPager viewPager, final List<String> titles,final TabClickListener listener) {
         if (titles != null && titles.size() > 0) {
             removeAllViews();
             for (int i = 0; i < titles.size(); i++) {
@@ -160,18 +159,16 @@ public class TabIndicator extends LinearLayout {
 
                 if (mTextType == COLOR_TEXT) {
                     ColorTextView textView = new ColorTextView(getContext());
-                    LinearLayout.LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
-                            LayoutParams.MATCH_PARENT);
+                    LinearLayout.LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
                     params.width = mWidth / mCount;
 
                     textView.setText(title);
                     textView.setLayoutParams(params);
-                    textView.setTextColor(mDefaultColor, mChangeColor, mTextSize);
+                    textView.setTextColorAndSize(mDefaultColor, mChangeColor, mTextSize);
                     addView(textView);
                 } else {
                     TextView textView = new TextView(getContext());
-                    LinearLayout.LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
-                            LayoutParams.MATCH_PARENT);
+                    LinearLayout.LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
                     params.width = mWidth / mCount;
                     textView.setText(title);
                     textView.setGravity(Gravity.CENTER);

@@ -112,8 +112,7 @@ public class TransIndicator extends LinearLayout implements ViewPager.OnPageChan
             }
 
             mOpenView = bean.openview;
-            LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
+            LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
             params.setMargins(mLeftMargin,0,0,0);
             GradientDrawable drawable = new GradientDrawable();
             if (mTransType == TRANS_ROUND) {
@@ -131,13 +130,11 @@ public class TransIndicator extends LinearLayout implements ViewPager.OnPageChan
                 imageView.setBackground(drawable);
                 imageView.setLayoutParams(params);
                 if (i == 0){
-
                     mFirstView = imageView;
                 }
                 if (i == 1){
                     mSecondView = imageView;
                 }
-
                 addView(imageView);
             }
             if (viewPager != null) {
@@ -156,8 +153,7 @@ public class TransIndicator extends LinearLayout implements ViewPager.OnPageChan
         if (position == mCount - 1) {
             if (mOpenView != null) {
                 mOpenView.setVisibility(VISIBLE);
-                ObjectAnimator animator = ObjectAnimator.ofFloat(mOpenView,
-                        "alpha", 0, 1);
+                ObjectAnimator animator = ObjectAnimator.ofFloat(mOpenView, "alpha", 0, 1);
                 animator.setDuration(500);
                 animator.setInterpolator(new LinearInterpolator());
                 animator.start();
@@ -167,8 +163,7 @@ public class TransIndicator extends LinearLayout implements ViewPager.OnPageChan
             }
         } else {
             if (mOpenView != null) {
-                ObjectAnimator animator = ObjectAnimator.ofFloat(mOpenView,
-                        "alpha", 1, 0);
+                ObjectAnimator animator = ObjectAnimator.ofFloat(mOpenView,"alpha", 1, 0);
                 animator.setDuration(300);
                 animator.setInterpolator(new LinearInterpolator());
                 animator.start();

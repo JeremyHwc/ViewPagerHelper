@@ -13,9 +13,9 @@ import java.util.List;
 
 public class PageBean {
 
-    public View bottomLayout;
+    public View bottomLayout;//Indicator
     public View openview;
-    public List<Object> datas;
+    public List<Object> datas;//数据集
 
     public PageBean(Builder builder) {
         this.bottomLayout = builder.bottomLayout;
