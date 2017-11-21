@@ -20,8 +20,8 @@ import java.util.List;
 
 public class GlidenormalActivity extends AppCompatActivity {
 
-    private static final int[] RES = {R.mipmap.guide1,R.mipmap.guide2,R.mipmap.guide3,
-          R.mipmap.guide4 };
+    private static final int[] RES = {R.mipmap.guide1, R.mipmap.guide2, R.mipmap.guide3, R.mipmap.guide4};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,21 +32,20 @@ public class GlidenormalActivity extends AppCompatActivity {
     public void initView() {
 
         GlideViewPager viewPager = (GlideViewPager) findViewById(R.id.splase_viewpager);
-        NormalIndicator linearLayout = (NormalIndicator) findViewById(R.id.splase_bottom_layout);
+        NormalIndicator normalIndicator = (NormalIndicator) findViewById(R.id.splase_bottom_layout);
         Button button = (Button) findViewById(R.id.splase_start_btn);
-
-
 
         //先把本地的图片 id 装进 list 容器中
         List<Integer> images = new ArrayList<>();
         for (int i = 0; i < RES.length; i++) {
             images.add(RES[i]);
-
         }
+
         //配置pagerbean，这里主要是为了viewpager的指示器的作用，注意记得写上泛型
-        PageBean bean = new PageBean.Builder<Integer>()
+        PageBean bean = new PageBean
+                .Builder<Integer>()
                 .setDataObjects(images)
-                .setIndicator(linearLayout)
+                .setIndicator(normalIndicator)
                 .setOpenView(button)
                 .builder();
 
@@ -60,12 +59,11 @@ public class GlidenormalActivity extends AppCompatActivity {
             }
         });
 
-
         //点击实现跳转功能
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GlidenormalActivity.this,MainActivity.class));
+                startActivity(new Intent(GlidenormalActivity.this, MainActivity.class));
                 Toast.makeText(GlidenormalActivity.this, "回到首页", Toast.LENGTH_SHORT).show();
                 finish();
             }

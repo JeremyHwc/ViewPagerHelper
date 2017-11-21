@@ -25,6 +25,7 @@ import java.util.List;
  */
 public class GlideViewPager extends ViewPager {
     private LayoutInflater mInflater;
+
     public GlideViewPager(Context context) {
         this(context,null);
     }
@@ -34,12 +35,18 @@ public class GlideViewPager extends ViewPager {
         mInflater = LayoutInflater.from(context);
     }
 
+    /**
+     * 设置数据以及加载的布局
+     * @param bean
+     * @param layoutid
+     * @param listener
+     */
     public void setPageListener(PageBean bean, int layoutid, PageHelperListener listener){
         CusViewPagerAdapter adapter = new CusViewPagerAdapter<>(bean.datas,layoutid,listener);
         setAdapter(adapter);
 
         setOffscreenPageLimit(3);
-        setCurrentItem(bean.datas.size());
+//        setCurrentItem(bean.datas.size());
         setCurrentItem(0);
         if (bean.bottomLayout != null){
             //选择不同的indicator
