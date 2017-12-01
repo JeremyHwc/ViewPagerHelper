@@ -28,7 +28,6 @@ import java.util.List;
  */
 
 public class TabIndicator extends LinearLayout {
-    private static final String TAG = "zsr";
     /**
      * const
      */
@@ -36,12 +35,15 @@ public class TabIndicator extends LinearLayout {
     private static final int COLOR_TEXT = 1;
     private static final int TRI_TAB = 0;
     private static final int RECT_TAB = 1;
+    private static final int mDefaultTabVisibleCount=3;
+    private static final int mDefaultTabHeight=10;
+    private static final int mDefaultTabWidth=30;
     /**
      * attr
      */
-    private int mTabWidth;
-    private int mTabHeight;
-    private int mTriColor;
+    private int mTabWidth;//tab 宽度
+    private int mTabHeight;//tab 高度
+    private int mTriColor;// 三角 颜色
     private int mCount;
     private int mHeight;
     private int mWidth;
@@ -70,9 +72,9 @@ public class TabIndicator extends LinearLayout {
         super(context, attrs, defStyleAttr);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.TabIndicator);
 
-        mCount = ta.getInt(R.styleable.TabIndicator_visiabel_size, 4);//<!--可视化个数，比如有一排，我们就只要显示4个-->
-        mTabWidth = ta.getDimensionPixelSize(R.styleable.TabIndicator_tab_width, 30);//<!--指示器的宽度-->
-        mTabHeight = ta.getDimensionPixelSize(R.styleable.TabIndicator_tab_height, 10);//<!--指示器的高度-->
+        mCount = ta.getInt(R.styleable.TabIndicator_visiabel_size, mDefaultTabVisibleCount);//<!--可视化个数，比如有一排，我们就只要显示4个-->
+        mTabWidth = ta.getDimensionPixelSize(R.styleable.TabIndicator_tab_width, mDefaultTabWidth);//<!--指示器的宽度-->
+        mTabHeight = ta.getDimensionPixelSize(R.styleable.TabIndicator_tab_height, mDefaultTabHeight);//<!--指示器的高度-->
         mTriColor = ta.getResourceId(R.styleable.TabIndicator_tab_color, R.color.page_white);//<!--指示器的颜色-->
         mDefaultColor = ta.getColor(R.styleable.TabIndicator_tab_text_default_color, mDefaultColor);//<!--顶部文字默认的颜色-->
         mChangeColor = ta.getColor(R.styleable.TabIndicator_tab_text_change_color, mChangeColor);//<!--移动时，顶部文字的颜色-->

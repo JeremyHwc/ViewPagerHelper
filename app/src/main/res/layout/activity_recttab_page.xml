@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/gray_cccc"
+
         app:tab_color="@color/colorAccent"
         app:tab_width="50dp"
         app:tab_height="2dp"
